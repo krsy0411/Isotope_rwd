@@ -1,0 +1,129 @@
+main {
+    // 메인의 크기를 정하지 않고 크기 만들기
+    margin-left: 400px;
+    // 최소 높이
+    min-height: 600px;
+    padding: 20px;
+
+    ul {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 20px;
+
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        li {
+            float: right;
+            margin-right: 20px;
+            width: 100px;
+            height: 26px;
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: #fff;
+                // 박스 크기가 26px이므로 line-height를 26px로 지정해서 세로 가운데에 위치하도록 설정
+                font: bold 7px/26px "orbitron";
+                color: #aaa;
+                letter-spacing: 1px;
+                // 가로를 정렬
+                text-align: center;
+                box-shadow: 0px 5px 20px rgba(0,0,0,.05);
+            }
+
+            // li태그에 on이 있으면 버튼 활성화
+            &.on a {
+                background: linear-gradient(45deg, aqua, cornflowerblue);
+                color: #fff;
+                box-shadow: 0px 5px 20px rgba(0, 255, 255, 0.539);
+            }
+        }
+    }
+
+    section {
+        width: 100%;
+
+        // float설정을 위한 준비
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        article {
+            // 5개씩 좌우배치
+            width: 20%;
+            float: left;
+            overflow: hidden;
+            padding: 12px;
+
+            .inner {
+                width: 100%;
+                background-color: #fff;
+                padding: 14px;
+                box-shadow: 5px 5px 10px rgba(0,0,0,.1);
+
+                img {
+                    // article 크기를 상속
+                    width: 100%;
+                }
+
+                h2 {
+                    font: bold 11px/1 "orbitron";
+                    letter-spacing: 1px;
+                    color: #444;
+                    margin-top: 15px;
+                    margin-bottom: 5px;
+                }
+
+                p {
+                    font: 10px/1.2 "arial";
+                    color: #777;
+                    margin-bottom: 15px;
+                }
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width:$web){
+    main {
+        // 화면이 작아지면 헤더가 위로 올라가니까 초기화
+        margin-left: 0px;
+    }
+    
+}
+
+@media screen and (max-width:$tabletB){
+    main section article {
+        // 899px 이하일땐 article 박스가 4개씩 가로배치 되도록
+        width: 25%;
+    }
+}
+
+@media screen and (max-width:$tabletM){
+    main section article {
+        // 799px 이하일땐 article 박스가 3개씩 가로배치 되도록
+        width: 33.333%;
+    }
+}
+
+@media screen and (max-width:$tabletS){
+    main section article {
+        // 699px 이하일땐 article 박스가 2개씩 가로배치 되도록
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:$mobile){
+    main section article {
+        // 499px이하면 article 박스가 1개씩 가로배치 되도록
+        width: 100%;
+    }
+}

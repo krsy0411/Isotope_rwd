@@ -1,0 +1,108 @@
+header {
+    width: 400px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: linear-gradient(45deg, aqua, royalblue);
+
+    h1 {
+        font: bold 50px/1 "orbitron";
+        color: #fff;
+        letter-spacing: 1px;
+        position: absolute;
+        left: 30%;
+        top: 50%;
+        transform: translateY(-200%);
+
+        &::before {
+            content: "UI/UX DEVELOPMENT";
+            font: 14px/1 "orbitron";
+            color: #fff;
+            letter-spacing: 2px;
+            position: absolute;
+            left: 0px;
+            top: 120px;
+        }
+
+        &::after{
+            content: "";
+            display: block;
+            width: 130px;
+            height: 2px;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+    }
+
+    ul {
+        position: absolute;
+        left: 60px;
+        bottom: 100px;
+
+        li {
+            // 좌우배치
+            float: left;
+            margin-right: 10px;
+
+            a {
+                font-size: 20px;
+                color: #fff;
+
+                span {
+                    // transform은 인라인요소에선 작동X
+                    display: inline-block;
+                    // 20px의 70%크기
+                    transform: scale(0.7);
+                    // 왼쪽 세로 중앙을 중심축으로 변경
+                    transform-origin: left center;
+                }
+            }
+        }
+    }
+}
+
+// 화면크기가 줄어들면
+@media screen and (max-width:$web){
+    header {
+        width: 100%;
+        height: 80px;
+        // position 고정해제
+        position: relative;
+
+        h1 {
+            font: bold 24px/1 "orbitron";
+            transform: translateY(-50%);
+            left: 50px;
+
+            &::before, &::after {
+                display: none;
+            }
+        }
+
+        ul {
+            // 오른쪽에 배치하기 위해서 기존의 left값을 없애고 right값을 적용
+            left: auto;
+            right: 50px;
+            bottom: 25px;
+        }
+    }
+}
+
+// 화면크기가 499px under
+@media screen and (max-width:$mobile){
+    header {
+        // Lee's는 20px
+        h1 {
+            font-size: 20px;
+        }
+        // 각 아이콘들은 왼쪽 여백 좁게
+        ul li {
+            margin-left: 3px;
+            // 아이콘들 오른쪽 영어글씨 제거
+            a span {
+                display: none;
+            }
+        }
+    }
+}
